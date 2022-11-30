@@ -1,0 +1,136 @@
+* {
+    font-family: "Lato", sans-serif;
+}
+section {
+    padding-top: 100px;
+}
+
+.container .navbar-brand {
+    font-size: 24px;
+}
+.container * {
+    color: #004e90;
+}
+#hero {
+    min-height: 120vh;
+    background: linear-gradient(
+            180deg,
+            #313331 6.49%,
+            rgba(95, 95, 95, 0) 103.57%
+        ),
+        url("/img/bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.logo img {
+    margin-top: 50px;
+    height: 200px;
+    width: 200px;
+}
+
+#hero h1 {
+    font-size: 72px;
+    color: white;
+    font-weight: 800;
+}
+#hero p {
+    max-width: 600px;
+    margin: 18px auto;
+}
+#hero b {
+    color: #009bcb;
+    font-weight: 900;
+}
+#hero .btn-mulai {
+    margin-top: 30px;
+    background-color: #009bcb;
+    padding: 10px 60px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+#hero .btn-mulai:hover {
+    background-color: #0bb0e2;
+}
+#hero svg {
+    margin-top: 30px;
+}
+
+.img-thumbnail {
+    height: 281px;
+    width: 306px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 30px;
+    border-radius: 20px;
+}
+.img-thumbnail.satu {
+    background-image: url("/img/hotel.jpg");
+}
+.img-thumbnail.dua {
+    background-image: url("/img/resto.jpg");
+}
+.img-thumbnail.tiga {
+    background-image: url("/img/hiburan.jpg");
+}
+.img-thumbnail.empat {
+    background-image: url("/img/parkir.jpeg");
+}
+
+#layanan h2 {
+    font-weight: 700;
+}
+
+.footer {
+    text-align: left;
+    font: bold 16px sans-serif;
+    padding: 0px 0px;
+    margin-top: 80px;
+    min-height: 400px;
+}
+.footer h1 {
+    font-size: 48px;
+}
+.footer .footer-left,
+.footer .footer-center,
+.footer .footer-right {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+}
+.footer-center {
+    background-color: #f2f2f2;
+    border-top: 2px solid #004e90;
+    border-bottom: 2px solid #004e90;
+}
+
+.footer .footer-center i {
+    background-color: #33383b;
+    color: #ffffff;
+    font-size: 20px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 42px;
+    margin: 30px 15px;
+    vertical-align: middle;
+}
+
+.footer .footer-center p {
+    display: inline-block;
+
+    vertical-align: middle;
+    margin: 0px;
+}
+
+.footer .footer-center p span {
+    display: block;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 2;
+}
