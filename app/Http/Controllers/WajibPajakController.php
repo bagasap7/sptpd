@@ -17,7 +17,9 @@ class WajibPajakController extends Controller
      */
     public function index()
     {
-        return view('dashboard.wajib_pajak.index');
+        return view('dashboard.wajib_pajak.index',[
+            'wajibpajak' => WajibPajak::all()
+        ]);
     }
 
     /**
@@ -108,7 +110,7 @@ class WajibPajakController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
