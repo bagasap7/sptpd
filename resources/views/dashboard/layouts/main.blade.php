@@ -56,6 +56,7 @@
   <!-- plugins:js -->
   <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
   <!-- endinject -->
+  
   <!-- Plugin js for this page -->
   <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
   <script src="{{ asset('vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
@@ -69,10 +70,11 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="{{ asset('js/jquery.cookie.js') }}" type="text/javascript"></script>
-  
-  {{-- <script src="{{ asset('js/jquery/jquery.min.js') }}" type="text/javascript"></script> --}}
   <script src="{{ asset('js/dashboard.js') }}"></script>
+  
+  <script src="{{ asset('js/jquery/jquery.min.js') }}" type="text/javascript"></script>
   @stack('scripts')
+  
   <!-- End custom js for this page-->
 </body>
 

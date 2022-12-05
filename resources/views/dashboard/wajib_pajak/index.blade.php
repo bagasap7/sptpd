@@ -61,20 +61,30 @@
                          <td>{{ $wp->tanggal_daftar }}</td>
                           <td>{{ $wp->nik }}</td>
                          <td>{{ sprintf("%07s",$wp->no_pendaftaran) }}</td>
-                         <td>NPWPD</td>
+                         <td>{{ "P.".$wp->jenis_usaha.".".sprintf("%07s",$wp->no_pendaftaran).".".$wp->id_kecamatan.".".$wp->id_kelurahan }}</td>
                          <td>{{ $wp->nama }}</td>
                          <td>{{ $wp->alamat }}</td>
                          <td>{{ $wp->no_telpon }}</td>
                           <td>
-                            <a href='' class="badge bg-info"><span data-feather="eye"></span></a>
+                           <a href="">
+                              <button type="button" class="btn btn-inverse-primary btn-lg mdi mdi-file"></button>
+
+                            </a>
                           </td>
                           <td>
-                            <a href='' class="badge bg-warning"><span data-feather="eye"></span></a>
-                          </td>
-                         {{-- <td><label class="badge badge-danger">Pending</label></td> --}}
-                      
+                            {{-- <a href=""><label class="badge badge-danger">Edit</label></a> --}}
+                           
+                            <a href="{{route('wajib_pajak.edit',$wp->id)  }}" class="d-inline-block text-decoration-none" >
+                              <button type="button"  class="d-flex btn btn-inverse-warning btn-fw">Edit</button>
+                              
+                            </a>
+                            <button type="button" class=" d-flex btn btn-inverse-info btn-fw">Data</button>
                          
-                          {{-- <td><label class="badge badge-danger">Pending</label></td> --}}
+                          </td>
+                     
+                          
+                         
+           
                         </tr>
                          @endforeach
                         

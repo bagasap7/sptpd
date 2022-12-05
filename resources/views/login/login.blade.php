@@ -70,17 +70,31 @@
   </head>
   <body class="text-center">
     <main class="form-signin w-100 m-auto">
-      <form>
+
+      @if (session()->has('loginError'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ session('loginError') }}
+          <button type="button" class="btn-close" role="alert" aria-label="Close"></button>
+        </div>
+      @endif
+
+      <form action="/login" method="post">
+        @csrf
         <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57" />
         <h1 class="h3 mb-3 fw-normal">Selamat Datang <br> Aplikasi STPTD Kabupaten Rembang</h1>
 
         <div class="form-floating">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
-          <label for="floatingInput">username</label>
+          <input type="text" class="form-control @error('username') is-invalid @enderror" id="floatingInput" name="username" required  placeholder="Username" autofocus value="{{ old('username') }}" />
+          <label for="username">Username</label>
+          @error('email')
+            <div class="invalid-error">
+              {{ $message }}
+            </div>
+          @enderror
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
-          <label for="floatingPassword">Password</label>
+          <input type="password" class="form-control" name="password" id="password"required  placeholder="Password" />
+          <label for="password">Password</label>
         </div>
 
         <div class="checkbox mb-3">

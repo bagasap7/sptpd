@@ -1,16 +1,87 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <h2>Wajib <b> Pajak</b></h2>
-       <div class="col-md-12 grid-margin stretch-card " id="wp">
+    <h2>Objek <b> Pajak</b></h2>
+
+        <div class="col-md-12 grid-margin">
+          <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Data Wajib Pajak</h4>
+                  <p class="card-description">
+                    Data Wajib Pajak nama
+                  </p>
+                  <form class="forms-sample" action="{{ route('objek_pajak.store') }}" method="POST">
+                    
+                    <div class=" row">
+                      <label for="tanggal" class="col-sm-3 col-form-label">Tanggal Daftar</label>
+                      <div class="col-sm-4 date datepicker" id="datepicker-popup">
+                       <input  id="tanggal_daftar" type="input" class="form-control" value="" required data-language="en" readonly >
+                        <input type="hidden" name="tanggal_daftar" value="{{ date('Y-m-d') }}">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label for="nomor" class="col-sm-3 col-form-label">NPWPD</label>
+                      <div class="col-sm-4">
+                        <input type="input" class="form-control" id="npwpd" name="npwpd" value=""  readonly placeholder="Nomor" required>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label for="nomor" class="col-sm-3 col-form-label">NIK</label>
+                      <div class="col-sm-4">
+                        <input type="input" class="form-control" id="jenis_pajak" name="jenis_pajak" value="Pajak"  readonly required>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <label for="nama" class="col-sm-3 col-form-label">Nama</label>
+                      <div class="col-sm-4">
+                        <input type="text" name="nama" id="nama" value="" class="form-control" placeholder="Nama" required>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <label for="nama" class="col-sm-3 col-form-label">Alamat</label>
+                      <div class="col-sm-4">
+                        <input type="text" name="nama" id="nama" value="" class="form-control" placeholder="Nama" required>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <label for="nama" class="col-sm-3 col-form-label">No Telepon</label>
+                      <div class="col-sm-4">
+                        <input type="text" name="nama" id="nama" value="" class="form-control" placeholder="Nama" required>
+                      </div>
+                    </div>
+                  
+                    <div class="row">
+                      <label for="kode_pos" class="col-sm-3 col-form-label">Kode Pos</label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control" name="kode_pos" id="kode_pos"  maxlength="5" placeholder="Kode Pos">
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <label for="kode_pos" class="col-sm-3 col-form-label">Email</label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control" name="email" id="email"  maxlength="5" placeholder="Kode Pos">
+                      </div>
+                    </div>
+                    
+                  </form>
+                </div>
+              </div>
+        </div>
+
+
+        <div class="col-md-12 grid-margin stretch-card " id="wp">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Formulir Wajib Pajak</h4>
+                  <h4 class="card-title">Formulir Objek Pajak</h4>
                   <p class="card-description">
-                    Tambah Wajib Pajak
+                    Tambah Objek Pajak
                   </p>
-                  <form class="forms-sample" action="/wajib_pajak/store" method="post">
-                    @csrf
+                  <form class="forms-sample" action="{{ route('objek_pajak.store') }}" method="POST">
+                    
                     <div class=" row">
                       <label for="tanggal" class="col-sm-3 col-form-label">Tanggal</label>
                       <div class="col-sm-4 date datepicker" id="datepicker-popup">
@@ -21,33 +92,28 @@
                     <div class="row">
                       <label for="nomor" class="col-sm-3 col-form-label">Nomor</label>
                       <div class="col-sm-4">
-                        <input type="input" class="form-control" id="no_pendaftaran" name="no_pendaftaran" value="{{ $kd }}"  readonly placeholder="Nomor" required>
+                        <input type="input" class="form-control" id="no_pendaftaran" name="no_pendaftaran" value=""  readonly placeholder="Nomor" required>
                       </div>
                     </div>
                     <div class="row">
-                      <label for="nomor" class="col-sm-3 col-form-label">Jenis Pendapatan</label>
+                      <label for="nomor" class="col-sm-3 col-form-label">Jenis Pajak</label>
                       <div class="col-sm-4">
-                        <input type="input" class="form-control" id="jenis_pendapatan" name="jenis_pendapatan" value="Pajak"  readonly required>
+                        <input type="input" class="form-control" id="jenis_pajak" name="jenis_pajak" value="Pajak"  readonly required>
                       </div>
                     </div>
                     
                     <div class="row">
-                      <label for="jenis_pendapatan" class="col-sm-3 col-form-label">Jenis Usaha</label>
+                      <label for="jenis_pendapatan" class="col-sm-3 col-form-label">Rekening</label>
                       <div class="col-sm-4">
-                        <select class="js-example-basic-single w-100  form-control" name="jenis_usaha" id="jenis_usaha" type="text" required>
-                          <option value="AL">Silahkan Pilih</option>
+                        <select class="js-example-basic-single w-100  form-control" name="Rekening" id="Rekening" type="text" required>
+                          <option value="AL">Silahkan Pilih</option> 
                           <option value="1">1 | Pribadi</option>
                           <option value="2">2 | Badan Usaha</option>
               
                         </select>
                       </div>
                     </div>
-                    <div class="row">
-                      <label for="nik" class="col-sm-3 col-form-label">NIK/NIB</label>
-                      <div class="col-sm-4">
-                        <input type="text" name="nik" id="nik" value=""  class="form-control"  placeholder="NIK" required>
-                      </div>
-                    </div>
+                   
                     <div class="row">
                       <label for="nama" class="col-sm-3 col-form-label">Nama</label>
                       <div class="col-sm-4">
@@ -69,13 +135,6 @@
                         <input type="text" class="form-control" id="rt" name="rt" value="" placeholder="RT" required>
                       </div>
                     </div>
-                    <div class="row">
-                      <label for="nama" class="col-sm-3 col-form-label">Kabupaten</label>
-                      <div class="col-sm-4">
-                        <input type="text" name="kabupaten" id="kabupaten" value="" class="form-control" placeholder="Kabupaten" required>
-                      </div>
-                    </div>
-                    
                     <div class="row">
                       <label for="kabupaten" class="col-sm-3 col-form-label">Kecamatan</label>
                       <div class="col-sm-4">
@@ -108,17 +167,18 @@
                       </div>
                     </div>
                     <div class="row">
-                      <label for="kode_pos" class="col-sm-3 col-form-label">Nomor Hp</label>
+                      <label for="kode_pos" class="col-sm-3 col-form-label">Latitude</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="no_telpon" id="no_telpon"  maxlength="13" placeholder="Nomor Telepon">
+                        <input type="text" class="form-control" name="atitude" id="latitude">
                       </div>
                     </div>
                     <div class="row">
-                      <label for="email" class="col-sm-3 col-form-label">Email</label>
+                      <label for="kode_pos" class="col-sm-3 col-form-label">Longitude</label>
                       <div class="col-sm-4">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                        <input type="text" class="form-control" name="longitude" id="longitude">
                       </div>
                     </div>
+                    
                     
                     
                     
@@ -128,9 +188,8 @@
                 </div>
               </div>
             </div>
-            
-@push('scripts')
-      <script>
+      @push('scripts')
+            <script>
         
         $(document).ready(function() {
             $('.js-example-basic-single-kecamatan').select2();
@@ -165,8 +224,10 @@
                     $('select[name="id_kelurahan"]').empty();
                 }
             });
-        });        
+        });
+
+        
     </script>
-@endpush
+        @endpush
             
 @endsection

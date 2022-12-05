@@ -121,7 +121,13 @@ class WajibPajakController extends Controller
      */
     public function edit($id)
     {
-        //
+        $wp = WajibPajak::findOrFail($id);
+        
+      $kecamatans = Kecamatan::all();
+        $kelurahans = Kelurahan::all();
+        return view('dashboard.wajib_pajak.edit', compact ([
+            'wp','kecamatans','kelurahans'
+        ]));
     }
 
     /**
@@ -133,7 +139,28 @@ class WajibPajakController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'jenis_pendapatan' => 'required',
+            'jenis_usaha' => 'required',
+            'nik' => 'required|max:16',
+            'nama' => 'required|max:255',
+            'alamat' => 'required|max:255',
+            'rt' => 'required',
+            'rw' => 'required',
+            'kabupaten' => 'required',
+            'id_kecamatan' => 'required',
+            // 'kecamatan_luar' => 'required',
+            'id_kelurahan' => 'required',
+            // 'kelurahan_luar' => 'required',
+            'no_telpon' => 'required|max:13',
+            'kode_pos' => 'required|max:5',
+            'email' => 'required|email:dns|unique:wajib_pajaks'
+
+        ];
+        $validatedData = $request->validate($rules);
+        WajibPajak::where('id') //salah
+                    ->update($validatedData);
+        return redirect('dashboard.wajib_pajak.index');
     }
 
     /**

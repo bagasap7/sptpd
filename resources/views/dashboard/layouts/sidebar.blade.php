@@ -18,7 +18,7 @@
             <div class="collapse" id="pendaftaran">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{ route('wajib_pajak.index') }}">Wajib Pajak</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Objek Pajak</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('objek_pajak.index') }}">Objek Pajak</a></li>
                 
               </ul>
             </div>
