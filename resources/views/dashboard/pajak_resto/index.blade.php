@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <h2>Wajib <b> Pajak</b></h2>
+    <h2>Pajak <b>  Restoran</b></h2>
 
     <div class="col-lg-4 d-flex flex-column">
       <div class="row flex-grow">
@@ -12,7 +12,7 @@
                                   <div class="col-sm-6">
                                     <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-0">
                                       <div>
-                                       <a href="{{ route('wajib_pajak.create') }}" class="btn btn-primary">Tambah Wajib Pajak</a>
+                                       <a href="{{ route('wajib_pajak.create') }}" class="btn btn-primary">Tambah Pajak Restoran</a>
                                       </div>
                                     </div>
                                   </div>
@@ -30,9 +30,9 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Register Wajib Pajak</h4>
+                  <h4 class="card-title">Register Pajak Restoran</h4>
                   <p class="card-description">
-                    Data Wajib Pajak yang sudah diregistrasi
+                    Data Pajak Restoran yang sudah diregistrasi
                   </p>
                   @if (session()->has('success'))
                     <div class="alert alert-success col-lg-12 " role="alert">{{ session('success') }}
@@ -55,30 +55,29 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach ($wajibpajak as $wp)
+                        {{-- @foreach ($wajibpajak as $wp) --}}
                         <tr>
-                         <td>{{ $loop->iteration }}</td> 
-                         <td>{{ $wp->tanggal_daftar }}</td>
-                         <td>{{ $wp->nik }}</td>
-                         <td>{{ sprintf("%07s",$wp->no_pendaftaran) }}</td>
-                         <td>{{ "P.".$wp->jenis_usaha.".".sprintf("%07s",$wp->no_pendaftaran).".".$wp->kecamatan->kode_kecamatan.".".$wp->kelurahan->kode_kelurahan }}</td>
-                         <td>{{ $wp->nama }}</td>
-                         <td>{{ $wp->alamat }}</td>
-                         <td>{{ $wp->no_telpon }}</td>
+                         <td></td> 
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
                           <td>
-                           <a href="{{ route('wajib_pajak.cetak',$wp->id) }}">
+                           <a href="">
                               <button type="button" class="btn btn-inverse-primary btn-lg mdi mdi-file"></button>
                             </a>
                           </td>
                           <td>
-                            <a href="{{route('wajib_pajak.edit',$wp->id)  }}" class="d-inline-block text-decoration-none" >
+                            <a href="" class="d-inline-block text-decoration-none" >
                               <button type="button"  class="d-flex btn btn-inverse-warning btn-fw">Edit</button>
                             </a>
                             <button type="button" class=" d-flex btn btn-inverse-info btn-fw">Data</button>
-                             <button type="button" class=" d-flex btn btn-inverse-danger btn-fw">Hapus</button>
                           </td>
                         </tr>
-                         @endforeach     
+                         {{-- @endforeach      --}}
                       </tbody>
                     </table>
                   </div>

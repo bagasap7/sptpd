@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="{{ asset('vendors/typicons/typicons.css')}}">
   <link rel="stylesheet" href="{{ asset('vendors/simple-line-icons/css/simple-line-icons.css')}}">
   <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css')}}">
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
   <!-- endinject -->
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.css')}}">
@@ -61,6 +64,9 @@
   <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
   <script src="{{ asset('vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
   <script src="{{ asset('vendors/progressbar.js/progressbar.min.js') }}"></script>
+   <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
 
   <!-- End plugin js for this page -->
   <!-- inject:js -->

@@ -13,6 +13,7 @@ class Kecamatan extends Model
         'nama_kecamatan',
         'kode_kecamatan',
     ];
+    protected $table = 'kecamatans';
     public function wajib_pajak(){
         return $this->hasMany(WajibPajak::class,'id_kecamatans','id');
     }

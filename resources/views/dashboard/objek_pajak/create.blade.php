@@ -15,55 +15,67 @@
                     <div class=" row">
                       <label for="tanggal" class="col-sm-3 col-form-label">Tanggal Daftar</label>
                       <div class="col-sm-4 date datepicker" id="datepicker-popup">
-                       <input  id="tanggal_daftar" type="input" class="form-control" value="" required data-language="en" readonly >
-                        <input type="hidden" name="tanggal_daftar" value="{{ date('Y-m-d') }}">
+                       
+                        <input  id="tanggal_daftar" type="input" class="form-control" value="{{ $wajibpajak->tanggal_daftar }}" required data-language="en" readonly >
+                          <input type="hidden" name="tanggal_daftar" value="{{ date('Y-m-d') }}">
+                       
+                       
                       </div>
                     </div>
                     <div class="row">
                       <label for="nomor" class="col-sm-3 col-form-label">NPWPD</label>
                       <div class="col-sm-4">
-                        <input type="input" class="form-control" id="npwpd" name="npwpd" value=""  readonly placeholder="Nomor" required>
+                       
+                            
+                        <input type="input" class="form-control" id="npwpd" name="npwpd" value="{{ sprintf("%07s",$wajibpajak->no_pendaftaran) }}"  readonly placeholder="Nomor" required>
+                       
                       </div>
                     </div>
                     <div class="row">
                       <label for="nomor" class="col-sm-3 col-form-label">NIK</label>
                       <div class="col-sm-4">
-                        <input type="input" class="form-control" id="jenis_pajak" name="jenis_pajak" value="Pajak"  readonly required>
+                       
+                            
+                        <input type="input" class="form-control" id="jenis_pajak" name="jenis_pajak" value="{{ $wajibpajak->nik }}"  readonly required>
+                       
                       </div>
                     </div>
 
                     <div class="row">
                       <label for="nama" class="col-sm-3 col-form-label">Nama</label>
                       <div class="col-sm-4">
-                        <input type="text" name="nama" id="nama" value="" class="form-control" placeholder="Nama" required>
+                       
+                            
+                        <input type="text" name="nama" id="nama" value="{{ $wajibpajak->nama }}" class="form-control" readonly required>
+                       
                       </div>
                     </div>
 
                     <div class="row">
                       <label for="nama" class="col-sm-3 col-form-label">Alamat</label>
                       <div class="col-sm-4">
-                        <input type="text" name="nama" id="nama" value="" class="form-control" placeholder="Nama" required>
+                        <input type="text" name="nama" id="nama" value="{{ $wajibpajak->alamat. ',' . ' '. 'RT'.' '.$wajibpajak->rt.','.' '. 'RW'.' '.$wajibpajak->rw }}" class="form-control" placeholder="Nama" readonly required>
                       </div>
                     </div>
 
                     <div class="row">
                       <label for="nama" class="col-sm-3 col-form-label">No Telepon</label>
                       <div class="col-sm-4">
-                        <input type="text" name="nama" id="nama" value="" class="form-control" placeholder="Nama" required>
+                        <input type="text" name="nama" id="nama" value="{{ $wajibpajak->no_telpon }}" class="form-control" readonly placeholder="Nama" required>
                       </div>
                     </div>
                   
                     <div class="row">
                       <label for="kode_pos" class="col-sm-3 col-form-label">Kode Pos</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="kode_pos" id="kode_pos"  maxlength="5" placeholder="Kode Pos">
+                        <input type="text" class="form-control" name="kode_pos" id="kode_pos"  value="{{ $wajibpajak->kode_pos }}" readonly maxlength="5" placeholder="Kode Pos">
                       </div>
                     </div>
 
                     <div class="row">
                       <label for="kode_pos" class="col-sm-3 col-form-label">Email</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="email" id="email"  maxlength="5" placeholder="Kode Pos">
+                        <input type="text" class="form-control" name="email" id="email" value="{{ $wajibpajak->email }}"  readonly maxlength="5" placeholder="Kode Pos">
                       </div>
                     </div>
                     
@@ -92,26 +104,36 @@
                     <div class="row">
                       <label for="nomor" class="col-sm-3 col-form-label">Nomor</label>
                       <div class="col-sm-4">
-                        <input type="input" class="form-control" id="no_pendaftaran" name="no_pendaftaran" value=""  readonly placeholder="Nomor" required>
+                        <input type="input" class="form-control" id="no_pendaftaran" name="no_pendaftaran" value="{{ $kd }}"  readonly placeholder="Nomor" required>
                       </div>
                     </div>
                     <div class="row">
                       <label for="nomor" class="col-sm-3 col-form-label">Jenis Pajak</label>
                       <div class="col-sm-4">
-                        <input type="input" class="form-control" id="jenis_pajak" name="jenis_pajak" value="Pajak"  readonly required>
+                        <select class="js-example-basic-single-jenis_pajak w-100  form-control" name="id_jenis_pajak" id="id_jenis_pajak" type="text" required>
+                          <option value="AL">Silahkan Pilih</option> 
+                          @foreach ($jenispajak as $jp)
+                          <option value="{{ $jp->id }}">{{ $jp->kode_jenis_pajak }} | {{ $jp->nama_pajak }}</option>
+                              
+                          @endforeach
+              
+                        </select>
                       </div>
                     </div>
                     
                     <div class="row">
-                      <label for="jenis_pendapatan" class="col-sm-3 col-form-label">Rekening</label>
+
+                      <label for="rekening" class="col-sm-3 col-form-label">Rekening</label>
                       <div class="col-sm-4">
-                        <select class="js-example-basic-single w-100  form-control" name="Rekening" id="Rekening" type="text" required>
-                          <option value="AL">Silahkan Pilih</option> 
-                          <option value="1">1 | Pribadi</option>
-                          <option value="2">2 | Badan Usaha</option>
-              
+                        <select class="js-example-basic-single-rekening w-100  form-control" name="id_rekening" id="id_rekening" type="text" placeholder="Rekening" required>
+                          <option >Silahkan Pilih</option>
                         </select>
                       </div>
+                    
+                      {{-- <div class="col-sm-4">
+                         <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pilih-rekening">Pilih Rekening</button>
+                        
+                      </div> --}}
                     </div>
                    
                     <div class="row">
@@ -142,8 +164,8 @@
                           <option >Silahkan Pilih</option>
                           @foreach ($kecamatans as $kecamatan)
                               <option value="{{ $kecamatan->id }}">{{ $kecamatan->kode_kecamatan }} | {{ $kecamatan->nama_kecamatan }} </option>
-                            
                           @endforeach
+                         
                           
                         </select>
                        
@@ -159,12 +181,14 @@
                        
                       </div>
                     </div>
-                  
                     <div class="row">
                       <label for="kode_pos" class="col-sm-3 col-form-label">Kode Pos</label>
                       <div class="col-sm-4">
                         <input type="text" class="form-control" name="kode_pos" id="kode_pos"  maxlength="5" placeholder="Kode Pos">
                       </div>
+                    </div>
+                    <div class="row">
+                      <div class="container map " id="map" style="height:350px; margin:20px 0px"></div>
                     </div>
                     <div class="row">
                       <label for="kode_pos" class="col-sm-3 col-form-label">Latitude</label>
@@ -178,19 +202,63 @@
                         <input type="text" class="form-control" name="longitude" id="longitude">
                       </div>
                     </div>
-                    
-                    
-                    
-                    
+
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
                     <button class="btn btn-light">Batal</button>
                   </form>
                 </div>
               </div>
             </div>
+
+          {{-- Modal --}}
+          <div class="modal fade " id="pilih-rekening" tabindex="-1" aria-labelledby="pilih-rekening" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Wajib Pajak Terdaftar</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>No</th>
+                                <th>Kode Rekening</th>
+                                <th>Nama Rekening</th>
+                                <th>Tarif</th>
+                           
+                                <th>Aksi</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                             
+                            <tr>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td> </td>
+                               
+                                  <td>
+                                    <a href="">
+                                      <button type="button" class="btn btn-success btn-icon-text">
+                                      <i class="ti-plus btn-icon-prepend"></i>Objek Pajak
+                                    </button>
+                                    </a>
+                                  </td> 
+                            </tr>
+                         
+                            </tbody>
+                          </table>
+                        </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
       @push('scripts')
-            <script>
-        
+      <script>
+      // Kelurahan
         $(document).ready(function() {
             $('.js-example-basic-single-kecamatan').select2();
         });
@@ -204,7 +272,7 @@
                 // window.alert(id_prov);
                 if (id_kecamatan) {
                     $.ajax({
-                        url: '/getKelurahan/' + id_kecamatan,
+                        url: '/getKelurahanObjek/' + id_kecamatan,
                         type: "GET",
                         dataType: "json",
                         success: function(data) {
@@ -214,7 +282,7 @@
                                 '<option hidden>Pilih Kelurahan</option>');
                             $.each(data, function(key, datakelurahan) {
                                 $('select[name="id_kelurahan"]').append('<option value="' +
-                                    datakelurahan.id + '">' + datakelurahan.kode_kelurahan + '|' + datakelurahan.nama_kelurahan +
+                                    datakelurahan.id + '">' + datakelurahan.kode_kelurahan + '|' + datakelurahan.nama_kelurahan  +
                                     '</option>');
                             });
 
@@ -226,6 +294,74 @@
             });
         });
 
+        // Rekening
+        $(document).ready(function() {
+            $('.js-example-basic-single-jenis_pajak').select2();
+        });
+        $(document).ready(function() {
+            $('.js-example-basic-single-rekening').select2();
+        });
+        
+        $(document).ready(function() {
+            $('#id_jenis_pajak').on('change', function() {
+                var id_jenis_pajak = $(this).val();
+                // window.alert(id_prov);
+                if (id_jenis_pajak) {
+                    $.ajax({
+                        url: '/getRekening/' + id_jenis_pajak,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                           
+                            $('select[name="id_rekening"]').empty();
+                            $('select[name="id_rekening"]').append(
+                                '<option hidden>Pilih Rekening</option>');
+                            $.each(data, function(key, dataRekening) {
+                                $('select[name="id_rekening"]').append('<option value="' +
+                                    dataRekening.id + '">' + dataRekening.kode_rekening + '|' + dataRekening.nama_rekening + '|' + dataRekening.persen_tarif + '%' +
+                                    '</option>');
+                            });
+
+                        }
+                    });
+                } else {
+                    $('select[name="id_rekening"]').empty();
+                }
+            });
+        });
+
+        // Peta Koordinat
+          var map = L.map('map').setView([-6.7147371, 111.3209311], 13);
+          
+
+              L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {  subdomains:['mt0','mt1','mt2','mt3'], attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              }).addTo(map);
+
+              let marker = {};
+              map.on('click',function(e){
+                let latitude = e.latlng.lat.toString().substring(0,15);
+                let longitude = e.latlng.lng.toString().substring(0,15);
+
+                if (marker != undefined) {
+                  map.removeLayer(marker);
+                };
+              var popup = L.popup()
+                .setLatLng([latitude,longitude])
+                .setContent("Koordinat : " + latitude +" , "+ longitude)
+                .openOn(map);
+
+                document.querySelector('#longitude').value = longitude;
+                document.querySelector('#latitude').value = latitude;
+                
+                marker = L.marker([latitude,longitude]).addTo(map)
+
+              })
+
+
+              // L.marker([51.5, -0.09]).addTo(map)
+              // .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+              // .openPopup();
+                    
         
     </script>
         @endpush

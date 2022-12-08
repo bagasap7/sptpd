@@ -33,20 +33,22 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Pajak Hotel</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Pajak Restoran</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Pajak Parkir</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('pajak_hotel.index') }}">Pajak Hotel</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('pajak_resto.index') }}">Pajak Restoran</a></li>
+                 <li class="nav-item"> <a class="nav-link" href="{{ route('pajak_resto.index') }}">Pajak Hiburan</a></li>
+                
+                <li class="nav-item"> <a class="nav-link" href="{{ route('pajak_parkir.index') }}">Pajak Parkir</a></li>
               </ul>
             </div>
           </li>
             <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ route('tunggakan.index') }}">
               <i class="mdi mdi-alert-octagon menu-icon"></i> 
               <span class="menu-title">Tunggakan</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ route('pembayaran.index') }}">
               <i class="mdi mdi-square-inc-cash menu-icon"></i>
               <span class="menu-title">Pembayaran</span>
             </a>
@@ -56,7 +58,7 @@
           
           <li class="nav-item nav-category">Pendaftaran Akun</li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <a class="nav-link" data-bs-toggle="collapse" href="{{ route('tambah_user.index') }}" aria-expanded="false" aria-controls="auth">
               <i class="menu-icon mdi mdi-account-multiple-plus"></i>
               <span class="menu-title">User</span>
             

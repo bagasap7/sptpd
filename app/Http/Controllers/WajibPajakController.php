@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Kecamatan;
 use App\Models\Kelurahan;
 use App\Models\WajibPajak;
+use PDF;
 use Illuminate\Support\Facades\DB;
 
 class WajibPajakController extends Controller
@@ -19,6 +20,7 @@ class WajibPajakController extends Controller
     {
         return view('dashboard.wajib_pajak.index',[
             'wajibpajak' => WajibPajak::all()
+            
         ]);
     }
 
@@ -35,6 +37,11 @@ class WajibPajakController extends Controller
      public function getKelurahan($id){
         $dataKelurahan = DB::table('kelurahans')->where('id_kecamatan',$id)->get();
         return response()->json($dataKelurahan);
+     }
+     public function cetak($id){
+        $wpcetak = WajibPajak::where('id',$id)->first();
+        $pdf = PDF::loadview('/dashboard/wajib_pajak/cetak',['wajibpajak'=>$wpcetak]);
+        return $pdf->stream();
      }
     public function create()
     {

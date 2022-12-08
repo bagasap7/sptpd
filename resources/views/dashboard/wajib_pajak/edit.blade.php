@@ -80,11 +80,22 @@
                       <label for="kabupaten" class="col-sm-3 col-form-label">Kecamatan</label>
                       <div class="col-sm-4">
                         <select class="js-example-basic-single-kecamatan w-100  form-control" onchange="" name="id_kecamatan" id="id_kecamatan" type="text" placeholder="Kecamatan" required>
-                          <option >{{ $wp->kode_kecamatan }} | {{ $wp->nama_kecamatan }}</option>
+                          @foreach ($kecamatans as $kecamatan)
+                              {{-- @if (old('id_kecamatan',$wp->kecamatan_id) == $kecamatan->id)
+                                  <option value="{{ $kecamatan->id }}" selected>{{ $kecamatan->kode_kecamatan }} | {{ $kecamatan->nama_kecamatan }} </option>
+                              @else
+                                  <option value="{{ $kecamatan->id }}">{{ $kecamatan->kode_kecamatan }} | {{ $kecamatan->nama_kecamatan }} </option>
+                              @endif --}}
+
+                              <option value="{{ $kecamatan->id }}" {{ $kecamatan->id == $mitra[$a]->get_dis->get_kota->id_provinsi ? 'selected' : ''}}></option>
+                          @endforeach
+
+
+                          {{-- <option >{{ $wp->kode_kecamatan }} | {{ $wp->nama_kecamatan }}</option>
                           @foreach ($kecamatans as $kecamatan)
                               <option value="{{ $kecamatan->id }}">{{ $kecamatan->kode_kecamatan }} | {{ $kecamatan->nama_kecamatan }} </option>
                             
-                          @endforeach
+                          @endforeach --}}
                           
                         </select>
                        

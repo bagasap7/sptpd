@@ -12,7 +12,7 @@
                                   <div class="col-sm-6">
                                     <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-0">
                                       <div>
-                                       <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Tambah Objek Pajak</button>
+                                       <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah-objek-pajak">Tambah Objek Pajak</button>
                                       </div>
                                     </div>
                                   </div>
@@ -71,7 +71,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade " id="tambah-objek-pajak" tabindex="-1" aria-labelledby="tambah-objek-pajak" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -94,7 +94,8 @@
                         </tr>
                       </thead>
                       <tbody>
-                         @foreach ($wajibpajak as $wp)
+                        @foreach ($wajibpajak as $wp)
+                       <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $wp->tanggal_daftar }}</td>
                             <td>{{ $wp->nik }}</td>
@@ -104,17 +105,13 @@
                             <td>{{ $wp->no_telpon }}</td>
                             <td>
                               <a href="{{ route('objek_pajak.create',$wp->id) }}">
-                              <button type="button" class="btn btn-success btn-icon-text">
-                              <i class="ti-plus btn-icon-prepend"></i>                                                    
-                              Objek Pajak
+                                <button type="button" class="btn btn-success btn-icon-text">
+                                <i class="ti-plus btn-icon-prepend"></i>Objek Pajak
                               </button>
-
-                            </a>
-                            </td>
-                            
-                        @endforeach
-                        
-                        
+                              </a>
+                            </td> 
+                       </tr>
+                       @endforeach
                       </tbody>
                     </table>
                   </div>

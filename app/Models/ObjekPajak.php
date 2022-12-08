@@ -10,7 +10,7 @@ class ObjekPajak extends Model
     use HasFactory;
 
     public function wajibpajak(){
-        return $this->belongsTo(WajibPajak::class,'id_wajib_pajak','id');
+        return $this->belongsTo(WajibPajak::class,'wajib_pajak_id','id');
     }
 
     public function kecamatan(){
@@ -18,5 +18,11 @@ class ObjekPajak extends Model
     }
     public function kelurahan(){
         return $this->belongsTo(Kelurahan::class,'kelurahan_id','id');
+    }
+    public function jenispajak(){
+        return $this->belongsTo(JenisPajak::class,'jenis_pajak_id','id');
+    }
+    public function rekening(){
+        return $this->belongsTo(Rekening::class,'rekening_id','id');
     }
 }

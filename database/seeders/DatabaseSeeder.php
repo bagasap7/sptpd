@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\JenisPajak;
 use Illuminate\Database\Seeder;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,13 +16,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {   
-        User::create([
-            'id_wajib_pajak' => '2',
-            'tanggal_daftar' => now(),
-            'name' => 'Bagasap',
-            'email' => 'bagasadityapramudana@gmail.com',
-            'akses' => '1',
-            'password' => bcrypt('12345')
+        JenisPajak::create([
+            'nama_pajak' => 'Pajak Hotel',
+            'kode_jenis_pajak' => '01',
+
 
         ]);
         // \App\Models\User::factory(10)->create();

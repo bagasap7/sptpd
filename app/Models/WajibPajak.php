@@ -15,10 +15,10 @@ class WajibPajak extends Model
     protected $table = 'wajib_pajaks';
 
     public function kecamatan(){
-        return $this->belongsTo(Kecamatan::class,'kecamatan_id','id');
+        return $this->belongsTo(Kecamatan::class,'id_kecamatan','id');
     }
     public function kelurahan(){
-        return $this->belongsTo(Kelurahan::class,'kelurahan_id','id');
+        return $this->belongsTo(Kelurahan::class,'id_kelurahan','id');
     }
     public function objekpajak(){
         return $this->hasMany(ObjekPajak::class,'objek_pajak_id','id');
