@@ -178,6 +178,8 @@ class WajibPajakController extends Controller
      */
     public function destroy($id)
     {
-        //
+        WajibPajak::destroy($id);
+        return redirect()->route('wajib_pajak.index')->with('delete','Wajib Pajak berhasil dihapus');
+
     }
 }

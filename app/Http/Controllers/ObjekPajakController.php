@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 use App\Models\Kecamatan;
 use App\Models\Kelurahan;
 use App\Models\WajibPajak;
+use App\Models\ObjekPajak;
 use App\Models\JenisPajak;
 use App\Models\Rekening;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -54,7 +56,29 @@ class ObjekPajakController extends Controller
             'q', 'kd'
         ]));
     }
-    public function store(){
+    public function store(Request $request){
+       
+        $validatedData = $request->validate([
+            'tanggal_daftar_objek' => 'required',
+            'no_objek' => 'required',
+            'id_jenis_pajak' => 'required',
+            'id_rekening' => 'required',
+            'nama_objek' => 'required|max:255',
+            'alamat_objek' => 'required|max:255',
+            'rt_objek' => 'required',
+            'rw_objek' => 'required',
+            'id_kecamatan' => 'required',
+            // 'kecamatan_luar' => 'required',
+            'id_kelurahan' => 'required',
+            // 'kelurahan_luar' => 'required',
+            'kode_pos_objek' => 'required|max:5',
+            'latitude' => 'required',
+            'longitude' => 'required'
+
+        ]);
+      
+        ObjekPajak::create($validatedData);
         
+         return redirect()->route('objek_pajak.index')->with('success','Objek Pajak berhasil ditambahkan');
     }
 }

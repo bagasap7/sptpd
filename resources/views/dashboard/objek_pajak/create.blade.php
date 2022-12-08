@@ -10,7 +10,7 @@
                   <p class="card-description">
                     Data Wajib Pajak nama
                   </p>
-                  <form class="forms-sample" action="{{ route('objek_pajak.store') }}" method="POST">
+                  <form class="forms-sample" action="" method="">
                     
                     <div class=" row">
                       <label for="tanggal" class="col-sm-3 col-form-label">Tanggal Daftar</label>
@@ -84,7 +84,7 @@
               </div>
         </div>
 
-
+{{-- Form Tambah Objek --}}
         <div class="col-md-12 grid-margin stretch-card " id="wp">
               <div class="card">
                 <div class="card-body">
@@ -92,19 +92,19 @@
                   <p class="card-description">
                     Tambah Objek Pajak
                   </p>
-                  <form class="forms-sample" action="{{ route('objek_pajak.store') }}" method="POST">
-                    
+                  <form class="forms-sample" action="/objek_pajak/store" method="post">
+                    @csrf
                     <div class=" row">
                       <label for="tanggal" class="col-sm-3 col-form-label">Tanggal</label>
                       <div class="col-sm-4 date datepicker" id="datepicker-popup">
-                       <input  id="tanggal_daftar" type="input" class="form-control" value="{{ date('d/m/Y') }}" required data-language="en" readonly >
-                        <input type="hidden" name="tanggal_daftar" value="{{ date('Y-m-d') }}">
+                       <input  id="tanggal_daftar_objek" name="tanggal_daftar_objek" type="input" class="form-control" value="{{ date('d/m/Y') }}" required data-language="en" readonly >
+                        <input type="hidden" name="tanggal_daftar_objek" value="{{ date('Y-m-d') }}">
                       </div>
                     </div>
                     <div class="row">
                       <label for="nomor" class="col-sm-3 col-form-label">Nomor</label>
                       <div class="col-sm-4">
-                        <input type="input" class="form-control" id="no_pendaftaran" name="no_pendaftaran" value="{{ $kd }}"  readonly placeholder="Nomor" required>
+                        <input type="input" class="form-control" id="no_objek" name="no_objek" value="{{ $kd }}"  readonly required>
                       </div>
                     </div>
                     <div class="row">
@@ -139,22 +139,22 @@
                     <div class="row">
                       <label for="nama" class="col-sm-3 col-form-label">Nama</label>
                       <div class="col-sm-4">
-                        <input type="text" name="nama" id="nama" value="" class="form-control" placeholder="Nama" required>
+                        <input type="text" name="nama_objek" id="nama_objek" value="" class="form-control" placeholder="Nama" required>
                       </div>
                      
                     </div>
                     <div class="row">
                       <label for="jalan" class="col-sm-3 col-form-label">Jalan</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="alamat" value="" id="alamat" placeholder="Alamat" required>
+                        <input type="text" class="form-control" name="alamat_objek" value="" id="alamat_objek" placeholder="Alamat" required>
                       </div>
                       <label for="rw" class="col-sm-1 col-form-label">RW</label>
                       <div class="col-sm-1">
-                        <input type="text" class="form-control" id="rw" name="rw" value="" placeholder="RW" required>
+                        <input type="text" class="form-control" id="rw_objek" name="rw_objek" value="" placeholder="RW" required>
                       </div>
                       <label for="rt" class="col-sm-1 col-form-label">RT</label>
                       <div class="col-sm-1">
-                        <input type="text" class="form-control" id="rt" name="rt" value="" placeholder="RT" required>
+                        <input type="text" class="form-control" id="rt_objek" name="rt_objek" value="" placeholder="RT" required>
                       </div>
                     </div>
                     <div class="row">
@@ -184,7 +184,7 @@
                     <div class="row">
                       <label for="kode_pos" class="col-sm-3 col-form-label">Kode Pos</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="kode_pos" id="kode_pos"  maxlength="5" placeholder="Kode Pos">
+                        <input type="text" class="form-control" name="kode_pos_objek" id="kode_pos_objek"  maxlength="5" placeholder="Kode Pos">
                       </div>
                     </div>
                     <div class="row">

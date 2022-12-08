@@ -34,8 +34,12 @@
                   <p class="card-description">
                     Data Wajib Pajak yang sudah diregistrasi
                   </p>
-                  @if (session()->has('success'))
+                @if (session()->has('success'))
                     <div class="alert alert-success col-lg-12 " role="alert">{{ session('success') }}
+                    </div>
+                @endif
+                @if (session()->has('delete'))
+                    <div class="alert alert-danger col-lg-12 " role="alert">{{ session('delete') }}
                     </div>
                 @endif
                   <div class="table-responsive">
@@ -66,16 +70,12 @@
                          <td>{{ $wp->alamat }}</td>
                          <td>{{ $wp->no_telpon }}</td>
                           <td>
-                           <a href="{{ route('wajib_pajak.cetak',$wp->id) }}">
-                              <button type="button" class="btn btn-inverse-primary btn-lg mdi mdi-file"></button>
-                            </a>
+                              <button href="{{ route('wajib_pajak.cetak',$wp->id) }}" type="button" class=" btn btn-inverse-primary btn-lg mdi mdi-file"></button>
                           </td>
                           <td>
-                            <a href="{{route('wajib_pajak.edit',$wp->id)  }}" class="d-inline-block text-decoration-none" >
-                              <button type="button"  class="d-flex btn btn-inverse-warning btn-fw">Edit</button>
-                            </a>
-                            <button type="button" class=" d-flex btn btn-inverse-info btn-fw">Data</button>
-                             <button type="button" class=" d-flex btn btn-inverse-danger btn-fw">Hapus</button>
+                            <a type="button" class=" text-center  text-decoration-none btn btn-inverse-info btn-icon">Data</a>
+                            <a type="button" href="{{route('wajib_pajak.edit',$wp->id)  }}" class="  btn btn-inverse-warning btn-icon"><i class="mdi mdi-pencil-box"></i></a>
+                            <a type="button"  href="{{route('wajib_pajak.delete',$wp->id)  }}" class="  btn btn-inverse-danger btn-icon"> <i class="mdi mdi-delete"></i></a>
                           </td>
                         </tr>
                          @endforeach     

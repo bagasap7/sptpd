@@ -9,6 +9,12 @@ class ObjekPajak extends Model
 {
     use HasFactory;
 
+    protected $guarded = [
+        'id'
+    ];
+
+    protected $table = 'objek_pajaks';
+
     public function wajibpajak(){
         return $this->belongsTo(WajibPajak::class,'wajib_pajak_id','id');
     }

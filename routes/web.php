@@ -43,6 +43,7 @@ Route::get('/wajib_pajak/create', [WajibPajakController::class,'create'])->name(
 Route::post('/wajib_pajak/store', [WajibPajakController::class,'store'])->name('wajib_pajak.store');
 Route::get('/wajib_pajak/edit/{id}', [WajibPajakController::class,'edit'])->name('wajib_pajak.edit');
 Route::post('/wajib_pajak/update{id}', [WajibPajakController::class,'update'])->name('wajib_pajak.update');
+Route::get('/wajib_pajak/delete/{id}', [WajibPajakController::class,'destroy'])->name('wajib_pajak.delete');
 Route::get('/getKelurahan/{id}',[WajibPajakController::class,'getKelurahan'])->name('wajib_pajak.kelurahan');
 Route::get('/wajib_pajak/cetak/{id}',[WajibPajakController::class,'cetak'])->name('wajib_pajak.cetak');
 
