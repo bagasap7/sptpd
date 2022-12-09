@@ -44,6 +44,7 @@
                         <tr>
                           <th>No</th>
                           <th>Tanggal</th>
+                          <th>Wajib Pajak</th>
                           <th>Jenis Pajak</th>
                           <th>Objek Pajak</th>
                           <th>Alamat</th>
@@ -54,7 +55,24 @@
                         </tr>
                       </thead>
                       <tbody>
-                       
+                        @foreach ($objekpajak as $op)
+                            
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $op->tanggal_daftar_objek}}</td>
+                        <td>{{ $op->wajibpajak->nama }}</td>
+                        <td>{{ $op->jenispajak->nama_pajak }}</td>
+                        <td>{{ $op->nama_objek }}</td>
+                        <td>{{ $op->alamat_objek }}</td>
+                        <td>{{ $op->rekening->kode_rekening }}</td>
+                        <td>
+                              <button href="{{ route('wajib_pajak.cetak',$op->id) }}" type="button" class=" btn btn-inverse-primary btn-lg mdi mdi-file"></button>
+                          </td>
+                          <td>
+                            <a type="button" class=" text-center  text-decoration-none btn btn-inverse-info btn-icon">Data</a>
+                            <a type="button" href="{{route('wajib_pajak.edit',$op->id)  }}" class="  btn btn-inverse-warning btn-icon"><i class="mdi mdi-pencil-box"></i></a>
+                            <a type="button"  href="{{route('wajib_pajak.delete',$op->id)  }}" class="  btn btn-inverse-danger btn-icon"> <i class="mdi mdi-delete"></i></a>
+                          </td>
+                        @endforeach
                         
                         
                       </tbody>

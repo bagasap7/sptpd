@@ -15,8 +15,10 @@ class ObjekPajakController extends Controller
 {
     public function index(){
         return view('dashboard.objek_pajak.index',[
-            // 'objekpajak' => ObjekPajak::all(),
-            'wajibpajak' => WajibPajak::all()
+            
+            'wajibpajak' => WajibPajak::all(),
+            'objekpajak' => ObjekPajak::all()
+
         ]);
     }
      public function getKecamatanObjek($id){

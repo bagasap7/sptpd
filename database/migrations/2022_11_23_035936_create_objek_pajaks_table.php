@@ -27,7 +27,6 @@ class CreateObjekPajaksTable extends Migration
             $table->char('rt_objek',3);
             $table->char('rw_objek',2);
             $table->string('kode_pos_objek');
-            $table->string('email');
             $table->string('latitude');
             $table->string('longitude');
             $table->timestamps();

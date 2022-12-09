@@ -26,9 +26,9 @@ class ObjekPajak extends Model
         return $this->belongsTo(Kelurahan::class,'kelurahan_id','id');
     }
     public function jenispajak(){
-        return $this->belongsTo(JenisPajak::class,'jenis_pajak_id','id');
+        return $this->belongsTo(JenisPajak::class,'id_jenis_pajak','id');
     }
     public function rekening(){
-        return $this->belongsTo(Rekening::class,'rekening_id','id');
+        return $this->belongsTo(Rekening::class,'id_rekening','id');
     }
 }

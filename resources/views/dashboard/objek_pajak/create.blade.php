@@ -193,7 +193,7 @@
                     <div class="row">
                       <label for="kode_pos" class="col-sm-3 col-form-label">Latitude</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="atitude" id="latitude">
+                        <input type="text" class="form-control" name="latitude" id="latitude">
                       </div>
                     </div>
                     <div class="row">

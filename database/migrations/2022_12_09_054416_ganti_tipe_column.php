@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class GantiIdUser extends Migration
+class GantiTipeColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class GantiIdUser extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['id_wajib_pajak']);
+        Schema::table('objek_pajaks',function(Blueprint $table){
+
+            // $table->dropForeign(['id_wajib_pajak']);
             $table->bigInteger('id_wajib_pajak')->nullable()->change();
         });
     }

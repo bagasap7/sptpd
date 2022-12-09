@@ -33,9 +33,31 @@
                 <li class="nav-item">
                 <a class="nav-link" href="/dashboard">Aplikasi</a>
                 </li>
+                @auth
+                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Selamat Datang {{ auth()->user()->name }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li>
+                                    <form action="/logout" method="post">
+                                        @csrf
+                                        <button class="dropdown-item" href="/dashboard">Logout</button>
+                                    </form>
+                                </li>
+                         
+                            </ul>
+                            </li>
+                        </ul>
+                    </div>
+                @else
                 <li class="nav-item">
                 <a class="nav-link" href="/login">Login</a>
                 </li>
+
+                @endauth
             </ul>
             </div>
         </div>

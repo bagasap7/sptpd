@@ -84,16 +84,16 @@
         <h1 class="h3 mb-3 fw-normal">Selamat Datang <br> Aplikasi STPTD Kabupaten Rembang</h1>
 
         <div class="form-floating">
-          <input type="text" class="form-control @error('username') is-invalid @enderror" id="floatingInput" name="username" required  placeholder="Username" autofocus value="{{ old('username') }}" />
-          <label for="username">Username</label>
-          @error('email')
+          <input type="text" class="form-control @error('name') is-invalid @enderror" id="floatingInput" name="name" required  placeholder="username" autofocus value="{{ old('name') }}" />
+          <label for="name">Username</label>
+          @error('name')
             <div class="invalid-error">
               {{ $message }}
             </div>
           @enderror
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" name="password" id="password"required  placeholder="Password" />
+          <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password"required  placeholder="Password" />
           <label for="password">Password</label>
         </div>
 

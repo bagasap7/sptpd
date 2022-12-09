@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_wajib_pajak')->references('id')->on('wajib_pajaks');
+            $table->bigInteger('id_wajib_pajak')->references('id')->on('wajib_pajaks')->nullable();
             $table->date('tanggal_daftar');
             $table->integer('akses');
             $table->string('name');
