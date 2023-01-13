@@ -18,11 +18,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_wajib_pajaks',
-        'akses',
+        'id_wajib_pajak',
         'tanggal_daftar',
+        'akses',
         'name',
         'email',
+        'username',
+        'no_telpon_wp',
+        'alamat_wp',
         'password',
     ];
 
@@ -46,9 +49,9 @@ class User extends Authenticatable
     ];
 
     public function transaksi(){
-        return $this->hasMany(Transaksi::class,'users_id','id');
+        return $this->hasMany(Transaksi::class,'id_user','id');
     }
     public function wajib_pajak(){
-        return $this->hasOne(WajibPajak::class,'wajib_pajaks_id','id');
+        return $this->hasOne(WajibPajak::class,'id_wajib_pajak','id');
     }
 }

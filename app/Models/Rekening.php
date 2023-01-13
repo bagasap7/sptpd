@@ -20,4 +20,7 @@ class Rekening extends Model
     public function objekpajak(){
         return $this->hasMany(Rekening::class,'id_rekening','id');
     }
+    public function transaksi(){
+        return $this->hasMany(Transaksi::class,'id_transaksi','id');
+    }
 }

@@ -17,4 +17,8 @@ class JenisPajak extends Model
     public function objekpajak(){
         return $this->hasMany(ObjekPajak::class,'id_objek_pajak','id');
     }
+
+    public function transaksi(){
+        return $this->hasMany(Transaksi::class,'id_transaksi','id');
+    }
 }

@@ -13,7 +13,7 @@
                     @csrf
                     <div class=" row">
                       <label for="tanggal" class="col-sm-3 col-form-label">Tanggal</label>
-                      <div class="col-sm-4 date datepicker" id="datepicker-popup">
+                      <div class="col-sm-4 " >
                        <input  id="tanggal_daftar" type="input" class="form-control" value="{{ date('d/m/Y') }}" required data-language="en" readonly >
                         <input type="hidden" name="tanggal_daftar" value="{{ date('Y-m-d') }}">
                       </div>

@@ -7,44 +7,68 @@
           </button>
         </div>
         <div>
-          <a class="navbar-brand brand-logo" href="index.html">
-            <img src="images/logo.svg" alt="logo" />
+          <a class="navbar-brand brand-logo d-flex" href="index.html">
+            <img  class="d-flex mx-2" src="{{ asset('img\Kabupaten Rembang.png') }}" alt="logo" />
+              <h4 class="d-flex mx-2 align-items-center"><b>E-SPTPD</b></h4>
           </a>
-          <a class="navbar-brand brand-logo-mini" href="index.html">
-            <img src="images/logo-mini.svg" alt="logo" />
-          </a>
+        
+          {{-- <a class="navbar-brand brand-logo-mini" href="index.html">
+            <img src="public\img\Kabupaten Rembang.png" alt="logo" />
+          </a> --}}
         </div>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-top"> 
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-            <h1 class="welcome-text">Selamat Datang, <span class="text-black fw-bold">Bagas</span></h1>
+            <h1 class="welcome-text">Selamat Datang, <span class="text-black fw-bold">{{ auth()->user()->name }}</span></h1>
            
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item d-none d-lg-block">
-            <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
+            {{-- <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
               <span class="input-group-addon input-group-prepend border-right">
                 <span class="icon-calendar input-group-text calendar-icon"></span>
               </span>
               <input type="text" class="form-control">
-            </div>
+            </div> --}}
           </li>
           <li class="nav-item dropdown d-none d-lg-block user-dropdown">
             <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-              <img class="img-xs rounded-circle" src="images/faces/face8.jpg" alt="Profile image"> </a>
+              @if (Auth::user()->akses == 1)
+                    <img class="img-xs rounded-circle" src="{{ asset('img/admin.png') }}" alt="Profile admin"> </a>
+              @else
+              @if (Auth::user()->akses == 2)
+                    <img class="img-xs rounded-circle" src="{{ asset('img/wp.png') }}" alt="Profile wp"> </a>
+              @else
+              @if (Auth::user()->akses == 3)
+                  <img class="img-xs rounded-circle" src="{{ asset('img/bank.png') }}" alt="Profile bank"> </a>
+              @endif
+              @endif
+              @endif
+         
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-header text-center">
-                <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">
-                <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
-                <p class="fw-light text-muted mb-0">allenmoreno@gmail.com</p>
+                @if (Auth::user()->akses == 1)
+                    <img class="img-xs rounded-circle" src="{{ asset('img/admin.png') }}" alt="Profile admin"> </a>
+              @else
+              @if (Auth::user()->akses == 2)
+                    <img class="img-xs rounded-circle" src="{{ asset('img/wp.png') }}" alt="Profile wp"> </a>
+              @else
+              @if (Auth::user()->akses == 3)
+                  <img class="img-xs rounded-circle" src="{{ asset('img/bank.png') }}" alt="Profile bank"> </a>
+              @endif
+              @endif
+              @endif
+                <p class="mb-1 mt-3 font-weight-semibold">{{ auth()->user()->name }}</p>
+                <p class="fw-light text-muted mb-0">{{ auth()->user()->email }}</p>
               </div>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i> Messages</a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Activity</a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i> FAQ</a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile </a>
+              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-key-outline text-primary me-2"></i> Password </a>
+                <form action="/logout" method="post">
+                  @csrf
+                    <button type="submit" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Logout</button>
+                </form>
             </div>
           </li>
         </ul>

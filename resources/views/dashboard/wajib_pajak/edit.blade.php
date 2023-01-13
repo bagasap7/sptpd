@@ -9,7 +9,7 @@
                   <p class="card-description">
                     Edit Data Wajib Pajak
                   </p>
-                  <form class="forms-sample" action="/wajib_pajak/update" method="post">
+                  <form class="forms-sample" action="{{ route('wajib_pajak.update',$wp->id) }}" method="post">
                     @csrf
                     <div class=" row">
                       <label for="tanggal" class="col-sm-3 col-form-label">Tanggal</label>
@@ -34,10 +34,11 @@
                     <div class="row">
                       <label for="jenis_pendapatan" class="col-sm-3 col-form-label">Jenis Usaha</label>
                       <div class="col-sm-4">
-                        <select class="js-example-basic-single w-100  form-control" name="jenis_usaha" id="jenis_usaha" type="text" required>
-                          <option value="{{ $wp->jenis_usaha }}">{{ $wp->jenis_usaha }}</option>
-                          <option value="1">1 | Pribadi</option>
-                          <option value="2">2 | Badan Usaha</option>
+                        <select class="js-example-basic-single w-100   form-control" name="jenis_usaha" id="jenis_usaha" value="$wp->jenis_usaha" type="text" required>
+                      
+                          <option value="1"{{ $wp->jenis_usaha == 'Pribadi' ? 'selected' : '' }}>1 | Pribadi</option>
+                          <option value="2"{{ $wp->jenis_usaha == 'Badan Usaha' ? 'selected' : '' }}>2 | Badan Usaha</option>
+              
               
                         </select>
                       </div>
@@ -58,15 +59,15 @@
                     <div class="row">
                       <label for="jalan" class="col-sm-3 col-form-label">Jalan</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="alamat" value="{{ $wp->alamat }}" id="alamat" placeholder="Alamat" required>
+                        <input type="text" class="form-control" name="alamat" value="{{ old('alamat',$wp->alamat) }}" id="alamat" placeholder="Alamat" required>
                       </div>
                       <label for="rw" class="col-sm-1 col-form-label">RW</label>
                       <div class="col-sm-1">
-                        <input type="text" class="form-control" id="rw" name="rw" value="{{ $wp->rw }}" placeholder="RW" required>
+                        <input type="text" class="form-control" id="rw" name="rw" value="{{ old('rw',$wp->rw) }}" placeholder="RW" required>
                       </div>
                       <label for="rt" class="col-sm-1 col-form-label">RT</label>
                       <div class="col-sm-1">
-                        <input type="text" class="form-control" id="rt" name="rt" value="{{ $wp->rt }}" placeholder="RT" required>
+                        <input type="text" class="form-control" id="rt" name="rt" value="{{ old('rt',$wp->rt) }}" placeholder="RT" required>
                       </div>
                     </div>
                     <div class="row">
@@ -86,17 +87,11 @@
                               @else
                                   <option value="{{ $kecamatan->id }}">{{ $kecamatan->kode_kecamatan }} | {{ $kecamatan->nama_kecamatan }} </option>
                               @endif --}}
-
-                              <option value="{{ $kecamatan->id }}" {{ $kecamatan->id == $mitra[$a]->get_dis->get_kota->id_provinsi ? 'selected' : ''}}></option>
-                          @endforeach
-
-
-                          {{-- <option >{{ $wp->kode_kecamatan }} | {{ $wp->nama_kecamatan }}</option>
-                          @foreach ($kecamatans as $kecamatan)
-                              <option value="{{ $kecamatan->id }}">{{ $kecamatan->kode_kecamatan }} | {{ $kecamatan->nama_kecamatan }} </option>
-                            
-                          @endforeach --}}
-                          
+                              <option value="{{ $kecamatan->id }}" {{ $wp->id_kecamatan == $kecamatan->id ? 'selected' : '' }}>{{ $kecamatan->kode_kecamatan }} | {{ $kecamatan->nama_kecamatan }}</option>
+                                      
+                              {{-- <option value="{{ $kecamatan->id }}" {{ $kecamatan->id == $kecamatan->id_kecamatan? 'selected' : ''}}></option> --}}
+                          @endforeach 
+                          {{-- $mitra[$a]->get_dis->get_kota->id_provinsi --}}
                         </select>
                        
                       </div>
@@ -105,7 +100,10 @@
                       <label for="kelurahan" class="col-sm-3 col-form-label">Kelurahan</label>
                       <div class="col-sm-4">
                         <select class="js-example-basic-single-kelurahan w-100  form-control" name="id_kelurahan" id="id_kelurahan" type="text" placeholder="Kelurahan" required>
-                          <option >Silahkan Pilih</option>
+                          @foreach ($kelurahans as $kelurahan)
+                              
+                          <option value="{{ $kelurahan->id}}" {{ $wp->id_kelurahan == $kelurahan->id ? 'selected' : '' }}>{{ $kelurahan->kode_kelurahan }} | {{ $kelurahan->nama_kelurahan }}</option>
+                          @endforeach  
                         
                         </select>
                        
@@ -115,19 +113,19 @@
                     <div class="row">
                       <label for="kode_pos" class="col-sm-3 col-form-label">Kode Pos</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="kode_pos" id="kode_pos" value="{{ $wp->kode_pos }}"  maxlength="5" placeholder="Kode Pos">
+                        <input type="text" class="form-control" name="kode_pos" id="kode_pos" value="{{ old('kode_pos',$wp->kode_pos) }}"  maxlength="5" placeholder="Kode Pos">
                       </div>
                     </div>
                     <div class="row">
                       <label for="kode_pos" class="col-sm-3 col-form-label">Nomor Hp</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="no_telpon" id="no_telpon" value="{{ $wp->no_telpon }}"  maxlength="13" placeholder="Nomor Telepon">
+                        <input type="text" class="form-control" name="no_telpon" id="no_telpon" value="{{ old('no_telpon',$wp->no_telpon) }}"  maxlength="13" placeholder="Nomor Telepon">
                       </div>
                     </div>
                     <div class="row">
                       <label for="email" class="col-sm-3 col-form-label">Email</label>
                       <div class="col-sm-4">
-                        <input type="email" class="form-control" name="email" value="{{ $wp->email }}" id="email" placeholder="Email">
+                        <input type="email" class="form-control" name="email" value="{{ old('email',$wp->email) }}" id="email" placeholder="Email">
                       </div>
                     </div>
                     

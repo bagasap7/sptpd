@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Kecamatan;
 use App\Models\Kelurahan;
 use App\Models\WajibPajak;
+use App\Models\ObjekPajak;
 use PDF;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +18,8 @@ class WajibPajakController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $this->authorize('admin');
         return view('dashboard.wajib_pajak.index',[
             'wajibpajak' => WajibPajak::all()
             
@@ -116,8 +118,15 @@ class WajibPajakController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {      
+         $wp = WajibPajak::findOrFail($id)->first();
         
+        //  $objekpajak = ObjekPajak::where('id_wajib_pajak',$id)->first();
+        $objekpajak = ObjekPajak::where('id_wajib_pajak',$id)->get();
+        // dd($objekpajak);
+        return view('dashboard.wajib_pajak.data',compact([
+            'wp','objekpajak'
+        ]));
     }
 
     /**
@@ -130,7 +139,7 @@ class WajibPajakController extends Controller
     {
         $wp = WajibPajak::findOrFail($id);
         
-      $kecamatans = Kecamatan::all();
+        $kecamatans = Kecamatan::all();
         $kelurahans = Kelurahan::all();
         return view('dashboard.wajib_pajak.edit', compact ([
             'wp','kecamatans','kelurahans'
@@ -146,28 +155,35 @@ class WajibPajakController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $rules = [
-            'jenis_pendapatan' => 'required',
-            'jenis_usaha' => 'required',
-            'nik' => 'required|max:16',
-            'nama' => 'required|max:255',
-            'alamat' => 'required|max:255',
-            'rt' => 'required',
-            'rw' => 'required',
-            'kabupaten' => 'required',
-            'id_kecamatan' => 'required',
-            // 'kecamatan_luar' => 'required',
-            'id_kelurahan' => 'required',
-            // 'kelurahan_luar' => 'required',
-            'no_telpon' => 'required|max:13',
-            'kode_pos' => 'required|max:5',
-            'email' => 'required|email:dns|unique:wajib_pajaks'
+        // return $request;
+        // $rules = [
+        //     'jenis_pendapatan' => 'required',
+        //     'jenis_usaha' => 'required',
+        //     'nik' => 'required|unique:wajib_pajaks|max:16',
+        //     'nama' => 'required|unique:wajib_pajaks|max:255',
+        //     'alamat' => 'required|max:255',
+        //     'rt' => 'required',
+        //     'rw' => 'required',
+        //     'kabupaten' => 'required',
+        //     'id_kecamatan' => 'required',
+        //     // 'kecamatan_luar' => 'required',
+        //     'id_kelurahan' => 'required',
+        //     // 'kelurahan_luar' => 'required',
+        //     'no_telpon' => 'required|max:13',
+        //     'kode_pos' => 'required|max:5',
+        //     'email' => 'required|email:dns|unique:wajib_pajaks'
 
-        ];
-        $validatedData = $request->validate($rules);
-        WajibPajak::where('id') //salah
-                    ->update($validatedData);
-        return redirect('dashboard.wajib_pajak.index');
+        // ];
+        // $validatedData = $request->validate($rules);
+              $wp = WajibPajak::findOrFail($id);
+              $wp->update($request->all());
+
+        // dd($wp);
+        // WajibPajak::find($id) //salah
+        //             ->update($validatedData);
+        return redirect()->route('wajib_pajak.index')->with('edit','berhasil diedit');
+        
+        
     }
 
     /**

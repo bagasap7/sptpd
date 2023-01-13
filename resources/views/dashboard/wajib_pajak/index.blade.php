@@ -38,8 +38,8 @@
                     <div class="alert alert-success col-lg-12 " role="alert">{{ session('success') }}
                     </div>
                 @endif
-                @if (session()->has('delete'))
-                    <div class="alert alert-danger col-lg-12 " role="alert">{{ session('delete') }}
+                @if (session()->has('edit'))
+                    <div class="alert alert-warning col-lg-12 " role="alert">{{ session('edit') }}
                     </div>
                 @endif
                   <div class="table-responsive">
@@ -70,12 +70,12 @@
                          <td>{{ $wp->alamat }}</td>
                          <td>{{ $wp->no_telpon }}</td>
                           <td>
-                              <button href="{{ route('wajib_pajak.cetak',$wp->id) }}" type="button" class=" btn btn-inverse-primary btn-lg mdi mdi-file"></button>
+                              <a href="{{ route('wajib_pajak.cetak',$wp->id) }}" type="button" class=" btn btn-inverse-primary btn-lg mdi mdi-file"></a>
                           </td>
                           <td>
-                            <a type="button" class=" text-center  text-decoration-none btn btn-inverse-info btn-icon">Data</a>
+                            <a type="button" href="{{route('wajib_pajak.show',$wp->id)  }}" class=" text-center  text-decoration-none btn btn-inverse-info btn-icon">Data</a>
                             <a type="button" href="{{route('wajib_pajak.edit',$wp->id)  }}" class="  btn btn-inverse-warning btn-icon"><i class="mdi mdi-pencil-box"></i></a>
-                            <a type="button"  href="{{route('wajib_pajak.delete',$wp->id)  }}" class="  btn btn-inverse-danger btn-icon"> <i class="mdi mdi-delete"></i></a>
+                           
                           </td>
                         </tr>
                          @endforeach     

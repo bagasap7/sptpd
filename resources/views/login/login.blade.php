@@ -76,17 +76,16 @@
           {{ session('loginError') }}
           <button type="button" class="btn-close" role="alert" aria-label="Close"></button>
         </div>
-      @endif
-
+      @endif 
       <form action="/login" method="post">
         @csrf
-        <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57" />
+        <img class="mb-4" src="{{ asset('img\Kabupaten Rembang.png') }}" alt="" width="72" height="77" />
         <h1 class="h3 mb-3 fw-normal">Selamat Datang <br> Aplikasi STPTD Kabupaten Rembang</h1>
 
-        <div class="form-floating">
-          <input type="text" class="form-control @error('name') is-invalid @enderror" id="floatingInput" name="name" required  placeholder="username" autofocus value="{{ old('name') }}" />
-          <label for="name">Username</label>
-          @error('name')
+        <div class="form-floating ">
+          <input type="text" class="form-control @error('username') is-invalid @enderror" id="floatingInput" name="username" required  placeholder="username" autofocus value="{{ old('username') }}" />
+          <label for="username">Username</label>
+          @error('username')
             <div class="invalid-error">
               {{ $message }}
             </div>
@@ -103,6 +102,7 @@
         <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
         <p class="mt-5 mb-3 text-muted">&copy; Copyright 2021-2022 © BPPKAD Pemerintah Daerah Kabupaten Rembang</p>
       </form>
+    
     </main>
   </body>
 </html>

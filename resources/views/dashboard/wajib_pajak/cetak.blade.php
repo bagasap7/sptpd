@@ -1,6 +1,4 @@
-@extends('dashboard.layouts.main')
 
-@section('container')
     <h2>Wajib <b> Pajak</b></h2>
 
                     <table class="table">
@@ -32,4 +30,3 @@
                          
                       </tbody>
                     </table>
-@endsection

@@ -14,7 +14,7 @@
                     
                     <div class=" row">
                       <label for="tanggal" class="col-sm-3 col-form-label">Tanggal Daftar</label>
-                      <div class="col-sm-4 date datepicker" id="datepicker-popup">
+                      <div class="col-sm-4 date" id="">
                        
                         <input  id="tanggal_daftar" type="input" class="form-control" value="{{ $wajibpajak->tanggal_daftar }}" required data-language="en" readonly >
                           <input type="hidden" name="tanggal_daftar" value="{{ date('Y-m-d') }}">
@@ -95,8 +95,15 @@
                   <form class="forms-sample" action="/objek_pajak/store" method="post">
                     @csrf
                     <div class=" row">
+                      
+                      <div class="col-sm-4">
+                       <input  id="id_wajib_pajak" name="id_wajib_pajak" type="hidden" class="form-control" value="{{ $wajibpajak->id }}" required data-language="en" readonly >
+                        
+                      </div>
+                    </div>
+                    <div class=" row">
                       <label for="tanggal" class="col-sm-3 col-form-label">Tanggal</label>
-                      <div class="col-sm-4 date datepicker" id="datepicker-popup">
+                      <div class="col-sm-4 date" id="">
                        <input  id="tanggal_daftar_objek" name="tanggal_daftar_objek" type="input" class="form-control" value="{{ date('d/m/Y') }}" required data-language="en" readonly >
                         <input type="hidden" name="tanggal_daftar_objek" value="{{ date('Y-m-d') }}">
                       </div>
@@ -137,7 +144,7 @@
                     </div>
                    
                     <div class="row">
-                      <label for="nama" class="col-sm-3 col-form-label">Nama</label>
+                      <label for="nama" class="col-sm-3 col-form-label">Nama Objek</label>
                       <div class="col-sm-4">
                         <input type="text" name="nama_objek" id="nama_objek" value="" class="form-control" placeholder="Nama" required>
                       </div>
@@ -148,7 +155,11 @@
                       <div class="col-sm-4">
                         <input type="text" class="form-control" name="alamat_objek" value="" id="alamat_objek" placeholder="Alamat" required>
                       </div>
-                      <label for="rw" class="col-sm-1 col-form-label">RW</label>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-3"></div>
+                      <label for="rw" class="col-sm-1 mt-1">RW</label>
                       <div class="col-sm-1">
                         <input type="text" class="form-control" id="rw_objek" name="rw_objek" value="" placeholder="RW" required>
                       </div>
@@ -157,6 +168,7 @@
                         <input type="text" class="form-control" id="rt_objek" name="rt_objek" value="" placeholder="RT" required>
                       </div>
                     </div>
+
                     <div class="row">
                       <label for="kabupaten" class="col-sm-3 col-form-label">Kecamatan</label>
                       <div class="col-sm-4">

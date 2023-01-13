@@ -21,6 +21,6 @@ class WajibPajak extends Model
         return $this->belongsTo(Kelurahan::class,'id_kelurahan','id');
     }
     public function objekpajak(){
-        return $this->hasMany(ObjekPajak::class,'objek_pajak_id','id');
+        return $this->hasMany(ObjekPajak::class,'id_wajib_pajak','id');
     }
 }
